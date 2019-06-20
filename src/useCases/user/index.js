@@ -9,17 +9,16 @@ const newUser = async(data)=>{
     const email = await verifyEmail(data.email);
     const phone = await verifyPhone(data.telefono);
     const name = await verifyName(data.nombre);
-
-    if(email!==null){
+    if(email===true){
         valid.push("Email Existente");
     }
-    if(phone!==null){
+    if(phone===true){
         valid.push("Telefono Existente");
     }
-    if(name!==null){
+    if(name===true){
         valid.push("Nombre existente");
     }
-    if(email!==null || phone!==null || name!==null){
+    if(email===true || phone===true || name===true){
         throw valid;
     }else{
         const newUser = new userModel(data);
@@ -42,7 +41,6 @@ const verifyName = async(nombre)=>{
     if(tname===null)return false;
     return true;
 }
-
 const updateUser = async(data)=>{
     return userModel.findOneAndUpdate(data);
 }
