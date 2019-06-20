@@ -8,7 +8,7 @@ const {routeUser}=require("./routes/users");
 app.use(express.json());
 app.use(cors());
 app.use('/centroAcopio',routeCentro);
-app.use('/users',routeUser);
+app.use('/user',routeUser);
 
 
 app.get('/',(req,res)=>{

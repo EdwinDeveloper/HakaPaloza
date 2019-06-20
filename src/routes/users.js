@@ -1,6 +1,8 @@
 const express = require("express");
 const routeUser = express.Router();
 
+const useCaseUser = require("../useCases/user");
+
 routeUser.get('/',async(req,res)=>{
     try{
         res.json({
@@ -24,11 +26,13 @@ routeUser.get('/',async(req,res)=>{
 
 routeUser.post('/new',async(req,res)=>{
     try{
+        const user = await useCaseUser.newUser(req.body);
+
         res.json({
             success:true,
             message:"new user created",
             payload:{
-
+                user
             }
         });
     }catch(error){
@@ -45,11 +49,12 @@ routeUser.post('/new',async(req,res)=>{
 
 routeUser.put('/update',async(req,res)=>{
     try{
+        const userUpdated = await useCaseUser.updateUser(req.body);
         res.json({
             success:true,
             message:"user updated",
             payload:{
-
+                userUpdated
             }
         });
     }catch(error){
@@ -66,11 +71,12 @@ routeUser.put('/update',async(req,res)=>{
 
 routeUser.delete('/delete',async(req,res)=>{
     try{
+        const userDeleted = await useCaseUser.deleteUser(req.body.id);
         res.json({
             success:true,
             message:"user deleted",
             payload:{
-                
+                userDeleted
             }
         });
     }catch(error){
