@@ -91,6 +91,30 @@ routeUser.delete('/delete',async(req,res)=>{
     }
 });
 
+routeUser.post('/auth',async(req,res)=>{
+        try{
+            const {email,password}=req.body;
+            const response = await useCaseUser.logIn(email,password);
+            console.log("RESPONSE : ",response);
+            
+            res.json({
+                success:true,
+                message:"Welcome",
+                payload:{
+                    response
+                }
+            });
+        }catch(error){
+            res.json({
+                success:false,
+                message:"Access not Allowed",
+                error:[
+                    error
+                ]
+            });
+        }
+});
+
 module.exports = {
     routeUser
 }

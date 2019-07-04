@@ -37,6 +37,12 @@ const user = new Schema({
         type:String,
         minlength:1,
         maxlength:30
+    },
+    password:{
+        required:true,
+        type:String,
+        minlength:1,
+        maxlength:60
     }
 });
 
