@@ -2,6 +2,10 @@ const userModel = require("../../models/users").model;
 const bcrypt = require("../../lib/bcrypt");
 const jwt = require("../../lib/jwt");
 
+const verifyIdUsuario=async(id) => {
+    return await userModel.findById(id).exec();
+}
+
 const findAllUsers = async()=>{
     return await userModel.find({}).exec();
 }
@@ -92,5 +96,6 @@ module.exports={
     newUser,
     updateUser,
     deleteUser,
-    logIn
+    logIn,
+    verifyIdUsuario
 }

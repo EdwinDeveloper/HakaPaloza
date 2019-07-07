@@ -1,13 +1,15 @@
 const express = require("express");
 const routeCentro = express.Router();
+const useCaseCentro = require("../useCases/centroAcopio/index");
 
-routeCentro.get('/',async(req,res)=>{
+routeCentro.post('/new',async(req,res)=>{
     try{
+        const newCentro = await useCaseCentro.newCentroAcopio(req.body);
         res.json({
             success:true,
             message:"Centro de acopio",
             payload:{
-                
+                newCentro
             }
         });
     }catch(error){

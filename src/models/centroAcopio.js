@@ -25,6 +25,12 @@ const centroAcopio = new Schema({
         type:String,
         minlength:1,
         maxlength:130
+    },
+    id_usuario:{
+        required:true,
+        type:String,
+        minlength:1,
+        maxlength:70
     }
 });
 

@@ -3,13 +3,14 @@ const routeUser = express.Router();
 
 const useCaseUser = require("../useCases/user");
 
-routeUser.get('/',async(req,res)=>{
+routeUser.get('/get',async(req,res)=>{
     try{
+        const allUsers = await useCaseUser.findAllUsers();
         res.json({
             success:true,
             message:"users",
             payload:{
-
+                allUsers
             }
         });
     }catch(error){
