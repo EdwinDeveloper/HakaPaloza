@@ -2,25 +2,29 @@ const mongoose = require("mongoose");
 const {Schema}=mongoose;
 
 const user = new Schema({
-    nombre:{
-        required:true,
-        type:String,
-        minlength:1,
-        maxlength:30
-    },
     telefono:{
         required:true,
         type:Number,
         minlength:1,
         maxlength:10
     },
-    foto:{
+    nombre:{
         required:true,
-        type:String
+        type:String,
+        minlength:1,
+        maxlength:30
     },
-    facebook:{
+    apellidos:{
         required:true,
-        type:String
+        type:String,
+        minlength:1,
+        maxlength:50
+    },
+    rfc:{
+        required:true,
+        type:String,
+        minlength:1,
+        maxlength:60
     },
     direccion:{
         required:true,
@@ -28,9 +32,9 @@ const user = new Schema({
         minlength:1,
         maxlength:40
     },
-    edad:{
+    fechaNacimiento:{
         required:true,
-        type:Number
+        type:String
     },
     email:{
         required:true,
@@ -43,6 +47,12 @@ const user = new Schema({
         type:String,
         minlength:1,
         maxlength:60
+    },
+    id_centro_acopio:{
+        required:false,
+        type:String,
+        minlength:1,
+        maxlength:70
     }
 });
 

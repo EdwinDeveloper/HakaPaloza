@@ -24,13 +24,13 @@ const newUser = async(data)=>{
         throw valid;
     }else{
         
-        const { nombre , telefono , foto , facebook , direccion , edad , email , password}=data;
+        const { telefono , nombre , apellidos , rfc , direccion , fechaNacimiento , email , password , id_centro_acopio }=data;
 
         const hashPass = await bcrypt.create(password);
         console.log("NUEVO HASH : ",hashPass);
         
         const user = {
-            nombre,telefono,foto,facebook,direccion,edad,email,password:hashPass
+            telefono , nombre , apellidos , rfc , direccion , fechaNacimiento , email , password:hashPass , id_centro_acopio
         }
 
         const newUser = new userModel(user);
